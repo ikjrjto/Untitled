@@ -28,12 +28,9 @@ public class MenuManager : MonoBehaviour
 
     public void play()
     {
-        foreach (Menu menu in _menus)
-        {
-            menu.Close();
-            
-        }
+        OpenMenu("Game");
         game.startGame();
+
     }
 
 
