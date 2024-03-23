@@ -62,8 +62,6 @@ namespace UnityEditor.Rendering
 
         List<VolumeComponentEditor> m_Editors = new List<VolumeComponentEditor>();
 
-        Dictionary<VolumeComponentEditor, string> m_VolumeComponentHelpUrls = new();
-
         /// <summary>
         /// Creates a new instance of <see cref="VolumeComponentListEditor"/> to use in an
         /// existing editor.
@@ -129,10 +127,6 @@ namespace UnityEditor.Rendering
                 m_Editors.Add(editor);
             else
                 m_Editors[index] = editor;
-
-            DocumentationUtils.TryGetHelpURL(component.GetType(), out string helpUrl);
-            helpUrl ??= string.Empty;
-            m_VolumeComponentHelpUrls[editor] = helpUrl;
         }
 
         int m_CurrentHashCode;
@@ -148,8 +142,6 @@ namespace UnityEditor.Rendering
                 // Remove them
                 m_Editors.Clear();
             }
-
-            m_VolumeComponentHelpUrls.Clear();
         }
 
         void RefreshEditors()
@@ -218,7 +210,7 @@ namespace UnityEditor.Rendering
                         pos => OnContextClick(pos, editor, id),
                         editor.hasAdditionalProperties ? () => editor.showAdditionalProperties : (Func<bool>)null,
                         () => editor.showAdditionalProperties ^= true,
-                        m_VolumeComponentHelpUrls[editor]
+                        Help.GetHelpURLForObject(editor.volumeComponent)
                     );
 
                     if (displayContent ^ editor.expanded)

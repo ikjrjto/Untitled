@@ -32,6 +32,8 @@ public class MovementPlayer : MonoBehaviour
 
                 Vector3 moveDirection = WorldPos - transform.position;
 
+                moveDirection.z = 0;
+
                 transform.LookAt(WorldPos);
 
                 transform.position += moveDirection * speed * Time.deltaTime;
@@ -48,6 +50,8 @@ public class MovementPlayer : MonoBehaviour
 
                     transform.LookAt(WorldPos);
 
+                    moveDirection.z = 0;
+
                     transform.position += moveDirection * speed * Time.deltaTime;
                 }
                 else if (touch.phase == TouchPhase.Moved)
@@ -56,6 +60,8 @@ public class MovementPlayer : MonoBehaviour
 
                     transform.LookAt(WorldPos);
 
+                    moveDirection.z = 0;
+
                     transform.position += moveDirection * speed * Time.deltaTime;
                 }
                 else if (touch.phase == TouchPhase.Stationary)
@@ -63,6 +69,8 @@ public class MovementPlayer : MonoBehaviour
                     Vector3 moveDirection = WorldPos - transform.position;
 
                     transform.LookAt(WorldPos);
+
+                    moveDirection.z = 0;
 
                     transform.position += moveDirection * speed * Time.deltaTime;
                 }

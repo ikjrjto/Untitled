@@ -32,6 +32,9 @@
             android:name="unity.launch-fullscreen"
             android:value="True" />
         <meta-data
+            android:name="unity.allow-resizable-window"
+            android:value="False" />
+        <meta-data
             android:name="notch.config"
             android:value="portrait|landscape" />
         <meta-data
