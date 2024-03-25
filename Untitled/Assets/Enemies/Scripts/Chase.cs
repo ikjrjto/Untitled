@@ -26,7 +26,7 @@ public class Chase : MonoBehaviour
             Invoke("move", Random.Range(1, 5));
             canMove = false;
         }
-        else if(chasing == true)
+        else if (chasing == true)
         {
             ChasePlayer();
         }
@@ -55,7 +55,16 @@ public class Chase : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "Player")
+        if (other.tag == "Player")
+        {
+            objective = other.transform;
+            chasing = true;
+        }
+    }
+
+    void OnTriggerStay(Collider other)
+    {
+        if (other.tag == "Player")
         {
             objective = other.transform;
             chasing = true;
